@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+    <script>
+        //A set of clocks for different timezones
+        function calcTime() {
+            // create Date object for current location
+            var d = new Date();
+
+            // convert to msec
+            // subtract local time zone offset
+            // get UTC time in msec
+            var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+
+            // create new Date object for different city
+            // using supplied offset
+            var bangaloreTime = new Date(utc + (3600000 * +5.5));
+            var tokyoTime = new Date(utc + (3600000 * +9));
+            var estTime = new Date(utc + (3600000 * -4));
+            var amsterdamTime = new Date(utc + (3600000 * +1));
+            var londonTime = new Date(utc);
+            var shangSingTime = new Date(utc + (3600000 * +8));
+
+            // return time as a string
+            document.getElementById('alpharetta_time').innerHTML = "In Alpharetta " + estTime.toLocaleString();
+            document.getElementById('cincinnati_time').innerHTML = "In Cincinnati " + estTime.toLocaleString();
+            document.getElementById('bangalore_time').innerHTML = "In Bangalore " + bangaloreTime.toLocaleString();
+            document.getElementById('shanghai_time').innerHTML = "In Shanghai " + shangSingTime.toLocaleString();
+            document.getElementById('singapore_time').innerHTML = "In Singapore " +nshangSingTime.toLocaleString();
+            document.getElementById('tokyo_time').innerHTML = "In Tokyo " + tokyoTime.toLocaleString();
+            document.getElementById('amsterdam_time').innerHTML = "In Amsterdam " + amsterdamTime.toLocaleString();
+            document.getElementById('london_time').innerHTML = "In London " + londonTime.toLocaleString();
+
+            setTimeout("calcTime()", 1000);
+        }
+    </script>
+
+</head>
+
+<body onLoad="javascript:calcTime()">
+
+    <div id="alpharetta_time"></div>
+    <div id="cincinnati_time"></div>
+    <div id="bangalore_time"></div>
+    <div id="shanghai_time"></div>
+    <div id="singapore_time"></div>
+    <div id="tokyo_time"></div>
+    <div id="amsterdam_time"></div>
+    <div id="london_time"></div>
+
+</body>
+
+</html>
